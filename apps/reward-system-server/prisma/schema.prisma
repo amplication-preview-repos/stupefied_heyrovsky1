@@ -1,0 +1,31 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Redeem {
+  action      String?
+  coinValue   Int?
+  coinsAfter  Int?
+  coinsBefore Int?
+  createdAt   DateTime @default(now())
+  id          String   @id @default(cuid())
+  updatedAt   DateTime @updatedAt
+  userHash    String?
+}
+
+model Coin {
+  coins         Int?
+  createdAt     DateTime  @default(now())
+  dataCadastro  DateTime?
+  email         String?
+  id            String    @id @default(cuid())
+  ip            String?
+  rewardSharing Int?
+  updatedAt     DateTime  @updatedAt
+  userHash      String?
+}
